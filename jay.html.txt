@@ -1,0 +1,23 @@
+package SeleniumFristClass;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import junit.framework.Assert;
+
+public class AlertVErification {
+
+	public static void main(String [] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\admin\\Downloads\\geckodriver-v0.31.0-win32\\geckodriver.exe");
+		FirefoxDriver driver= new FirefoxDriver();
+		driver.get("file:///C:/Users/admin/eclipse-workspace/SeleniumJavaAutomation/src/SeleniumFristClass/Alert.html");
+		
+		driver.findElement(By.xpath("/html/body/fieldset[1]/button")).click();
+		Alert alert= driver.switchTo().alert();
+		String actualText=alert.getText();
+		//String exectedText="This is Alert!!!";
+		String exectedText="This is an Alert Box!!!";
+		Assert.assertEquals(exectedText, actualText);
+		alert.accept();
+		
